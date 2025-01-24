@@ -1,5 +1,6 @@
 @prefix : <urn:webprotege:ontology:ac8b7007-d63b-49f2-8236-ea06b3482bed#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix onto: <https://onto.link/> .
 @prefix paf: <https://paf.link/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -19,6 +20,7 @@
 ###  https://ch.paf.link/parliamentaryAffairIdentifier
 chpaf:parliamentaryAffairIdentifier rdf:type owl:DatatypeProperty ;
                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                    onto:group "Parliamentary Affair" ;
                                     rdfs:domain chpaf:ParliamentaryAffairIdentifierEntity ;
                                     rdfs:range xsd:string .
 
@@ -44,7 +46,8 @@ prov:Entity rdf:type owl:Class .
 
 ###  https://ch.paf.link/ParliamentaryAffairIdentifierEntity
 chpaf:ParliamentaryAffairIdentifierEntity rdf:type owl:Class ;
-                                          rdfs:subClassOf paf:IdentifierEntity .
+                                          rdfs:subClassOf paf:IdentifierEntity ;
+                                          onto:group "Parliamentary Affair" .
 
 
 ###  https://ch.paf.link/ProceduralRequestReportActivity

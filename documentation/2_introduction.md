@@ -7,7 +7,7 @@ The main target group of this repository are people implementing software. For a
 There are three basic elements in ch.paf.link that are used to describe public affairs:
 
 - **activities**: what is done and when
-- **agents**: who is doing it
+- **agents**: who is connected in which function to the activity (sender, receiver, decision-maker, etc.)
 - **entities**: what is used as input for activities and what is produced by them as output
 
 ## Third Layer
