@@ -20,7 +20,6 @@
 ###  https://ch.paf.link/parliamentaryAffairIdentifier
 chpaf:parliamentaryAffairIdentifier rdf:type owl:DatatypeProperty ;
                                     rdfs:subPropertyOf owl:topDataProperty ;
-                                    onto:group "Parliamentary Affair" ;
                                     rdfs:domain chpaf:ParliamentaryAffairIdentifierEntity ;
                                     rdfs:range xsd:string .
 
@@ -47,7 +46,7 @@ prov:Entity rdf:type owl:Class .
 ###  https://ch.paf.link/ParliamentaryAffairIdentifierEntity
 chpaf:ParliamentaryAffairIdentifierEntity rdf:type owl:Class ;
                                           rdfs:subClassOf paf:IdentifierEntity ;
-                                          onto:group "Parliamentary Affair" .
+                                          paf:exampleURI "https://politics.ld.admin.ch/parliamentary-affair/17.4017" .
 
 
 ###  https://ch.paf.link/ProceduralRequestReportActivity
