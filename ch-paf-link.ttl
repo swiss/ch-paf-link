@@ -8,6 +8,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix chpaf: <https://ch.paf.link/> .
+@prefix schema: <http://schema.org/> .
 @base <urn:webprotege:ontology:ac8b7007-d63b-49f2-8236-ea06b3482bed> .
 
 <urn:webprotege:ontology:ac8b7007-d63b-49f2-8236-ea06b3482bed> rdf:type owl:Ontology .
@@ -30,6 +31,13 @@ chpaf:proceduralRequestReportYear rdf:type owl:DatatypeProperty ;
                                   rdfs:domain chpaf:ProceduralRequestReportActivity ;
                                   rdfs:range xsd:gYear .
 
+### https://ch.paf.link/proceduralRequestProposal
+chpaf:proceduralRequestProposal rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf owl:topDataProperty ;
+                                rdfs:domain chpaf:ProceduralRequestProposalEntity ;
+                                rdfs:range xsd:string ;
+                                schema:description "The actual proposal to comply with the procedural request."@en .
+
 
 #################################################################
 #    Classes
@@ -43,20 +51,23 @@ prov:Activity rdf:type owl:Class .
 prov:Entity rdf:type owl:Class .
 
 
-###  https://ch.paf.link/ParliamentaryAffairIdentifierEntity
-chpaf:ParliamentaryAffairIdentifierEntity rdf:type owl:Class ;
-                                          rdfs:subClassOf paf:IdentifierEntity ;
-                                          paf:exampleURI "https://politics.ld.admin.ch/parliamentary-affair/17.4017" .
+###  https://paf.link/ReportActivity
+paf:ReportActivity rdf:type owl:Class ;
+                   rdfs:subClassOf prov:Activity .
+
+###  https://paf.link/ProposalActivity
+paf:ProposalActivity rdf:type owl:Class ;
+                     rdfs:subClassOf prov:Activity .
 
 
-###  https://ch.paf.link/ProceduralRequestReportActivity
-chpaf:ProceduralRequestReportActivity rdf:type owl:Class ;
-                                      rdfs:subClassOf paf:ReportActivity .
+###  https://paf.link/InformationActivity
+paf:InformationActivity rdf:type owl:Class ;
+                        rdfs:subClassOf prov:Activity .
 
 
-###  https://ch.paf.link/ProceduralRequestReportEntity
-chpaf:ProceduralRequestReportEntity rdf:type owl:Class ;
-                                    rdfs:subClassOf paf:ReportEntity .
+###  https://paf.link/ReportEntity
+paf:ReportEntity rdf:type owl:Class ;
+                 rdfs:subClassOf prov:Entity .
 
 
 ###  https://paf.link/IdentifierEntity
@@ -64,14 +75,67 @@ paf:IdentifierEntity rdf:type owl:Class ;
                      rdfs:subClassOf prov:Entity .
 
 
-###  https://paf.link/ReportActivity
-paf:ReportActivity rdf:type owl:Class ;
-                   rdfs:subClassOf prov:Activity .
+###  https://ch.paf.link/ParliamentaryAffairIdentifierEntity
+chpaf:ParliamentaryAffairIdentifierEntity rdf:type owl:Class ;
+                                          rdfs:subClassOf paf:IdentifierEntity ;
+                                          paf:exampleURI "https://politics.ld.admin.ch/parliamentary-affair/17.4017" .
 
 
-###  https://paf.link/ReportEntity
-paf:ReportEntity rdf:type owl:Class ;
-                 rdfs:subClassOf prov:Entity .
+###  https://ch.paf.link/ProceduralRequestEntity
+chpaf:ProceduralRequestEntity rdf:type owl:Class ;
+                              rdfs:subClassOf prov:Entity ;
+                              schema:description "The actual procedural request with all the information about it."@en .
+
+
+###  https://ch.paf.link/ProceduralRequestReportActivity
+chpaf:ProceduralRequestReportActivity rdf:type owl:Class ;
+                                      rdfs:subClassOf paf:ReportActivity ;
+                                      paf:exampleURI "https://politics.ld.admin.ch/procedural-request/report/2021/activity" .
+
+
+###  https://ch.paf.link/ProceduralRequestReportEntity
+chpaf:ProceduralRequestReportEntity rdf:type owl:Class ;
+                                    rdfs:subClassOf paf:ReportEntity ;
+                                    paf:exampleURI "https://politics.ld.admin.ch/procedural-request/report/2021/entity" .
+
+
+###  https://ch.paf.link/ProceduralRequestProposalActivity
+chpaf:ProceduralRequestProposalActivity rdf:type owl:Class ;
+                                        rdfs:subClassOf paf:ProposalActivity ;
+                                        paf:exampleURI "https://politics.ld.admin.ch/procedural-request/proposal/2021/19.3618/activity" .
+
+###  https://ch.paf.link/ProceduralRequestProposalEntity
+chpaf:ProceduralRequestProposalEntity rdf:type owl:Class ;
+                                      rdfs:subClassOf paf:ProposalEntity ;
+                                      paf:exampleURI "https://politics.ld.admin.ch/procedural-request/proposal/2021/19.3618/entity" .
+
+
+###  https://ch.paf.link/ProceduralRequestInformationActivity
+chpaf:ProceduralRequestInformationActivity rdf:type owl:Class ;
+                                           rdfs:subClassOf paf:InformationActivity ;
+                                           paf:exampleURI "https://politics.ld.admin.ch/procedural-request/information/2021/19.4183/activity" .
+
+
+###  https://ch.paf.link/ProceduralRequestInformationEntity
+chpaf:ProceduralRequestInformationEntity rdf:type owl:Class ;
+                                         rdfs:subClassOf paf:InformationEntity ;
+                                         paf:exampleURI "https://politics.ld.admin.ch/procedural-request/information/2021/19.4183/entity" .
+
+
+###  https://ch.paf.link/ProceduralRequestConnex
+chpaf:ProceduralRequestConnex rdf:type owl:Class ;
+                              schema:description "Added as class to chpaf:ProceduralRequestInformationActivity and chpaf:ProceduralRequestInformationActivity if these are connected to other motions and postulates meaning that the proposal and information is the exact same as for these procedural requests."@en .
+
+###  https://ch.paf.link/ProceduralRequestProposalSubmitter
+chpaf:ProceduralRequestProposalSubmitter rdf:type owl:Class ;
+                                         rdfs:subClassOf paf:ProposalSubmitter ;
+                                         schema:description "The role of a submitter of the proposal."@en .
+
+
+###  https://ch.paf.link/ProceduralRequestInformationSubmitter
+chpaf:ProceduralRequestInformationSubmitter rdf:type owl:Class ;
+                                            rdfs:subClassOf paf:InformationSubmitter ;
+                                            schema:description "The role of a submitter of the information."@en .
 
 
 ###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi

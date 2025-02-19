@@ -1,4 +1,4 @@
-# Parliamentary Affair
+# Parliamentary Affairs
 
 ## National Parliament Identifier
 
