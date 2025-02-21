@@ -124,7 +124,7 @@ chpaf:ProceduralRequestInformationEntity rdf:type owl:Class ;
 
 ###  https://ch.paf.link/ProceduralRequestConnex
 chpaf:ProceduralRequestConnex rdf:type owl:Class ;
-                              schema:description "Added as class to chpaf:ProceduralRequestInformationActivity and chpaf:ProceduralRequestInformationActivity if these are connected to other motions and postulates meaning that the proposal and information is the exact same as for these procedural requests."@en .
+                              schema:description "Added as class to chpaf:ProceduralRequestProposalActivity and chpaf:ProceduralRequestInformationActivity if these are connected to other motions and postulates meaning that the proposal and information is the exact same as for these procedural requests."@en .
 
 ###  https://ch.paf.link/ProceduralRequestProposalSubmitter
 chpaf:ProceduralRequestProposalSubmitter rdf:type owl:Class ;
