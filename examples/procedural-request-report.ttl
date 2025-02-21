@@ -1,7 +1,0 @@
-@prefix chpaf: <https://ch.paf.link/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-<https://politics.ld.admin.ch/procedural-request/report/2021/activity> a chpaf:ProceduralRequestReportActivity ;
-    prov:used <https://politics.ld.admin.ch/procedural-request/report/2021/entity> ;
-    chpaf:proceduralRequestReportYear "2021"^^xsd:gYear ;
-    prov:wasInformedBy <https://politics.ld.admin.ch/procedural-request/proposal/2021/19.3618/activity>, <https://politics.ld.admin.ch/procedural-request/information/2021/19.4183/activity> .

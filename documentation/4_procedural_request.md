@@ -26,10 +26,14 @@ The yearly report concerning the status of the motions and postulates is modelle
 
 ### chpaf:proceduralRequestReportYear
 
+### Figure
+
+![Procedural Requests Report](./figures/procedural_request_report.svg "Procedural requests report.")
+
 ### Example
 
 <aside class="example" title="Procedural Request Report">
-    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural-request-report.ttl" target="_blank">Turtle file</a>.
+    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_report.ttl" target="_blank">Turtle file</a>.
 </aside>
 
 ## Proposal
@@ -51,7 +55,7 @@ The proposal how the Federal Council wants to handle the motions and postulates 
 ### Example
 
 <aside class="example" title="Procedural Request Proposal">
-    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural-request-proposal.ttl" target="_blank">Turtle file</a>.
+    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_proposal.ttl" target="_blank">Turtle file</a>.
 </aside>
 
 ## Information
@@ -67,3 +71,9 @@ The information about the status of motions and postulates is modelled as an act
 ### chpaf:ProceduralRequestInformationEntity
 
 ### chpaf:ProceduralRequestInformationSubmitter
+
+### Example
+
+<aside class="example" title="Procedural Request Information">
+    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_information.ttl" target="_blank">Turtle file</a>.
+</aside>

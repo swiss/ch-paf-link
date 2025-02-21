@@ -8,6 +8,10 @@ If an activity is related to a specific parliamentary affair, the activity needs
 
 ### chpaf:parliamentaryAffairIdentifier
 
+### Figure
+
+![National Parliament Identifier](./figures/national_parliament_identifier.svg "National parliament identifier.")
+
 ### Example
 
 <aside class="example" title="National Parliament Identifier">
