@@ -1,0 +1,81 @@
+<mxfile host="65bd71144e">
+    <diagram id="KUzoZ_WBEfeIF54OlFjl" name="Page-1">
+        <mxGraphModel dx="1667" dy="831" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;b&gt;Procedural&lt;/b&gt;&lt;div&gt;&lt;b&gt;Request&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Information&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Activity&lt;/b&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;comic=0;strokeColor=#000000;strokeWidth=2;fillColor=#67A9CF;gradientColor=none;fontSize=14;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="80" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;b&gt;Parliamentary&lt;/b&gt;&lt;div&gt;&lt;b&gt;Affair&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Identifier&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Entity&lt;/b&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;comic=0;strokeColor=#000000;strokeWidth=2;fillColor=#fddbc7;gradientColor=none;fontSize=14;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="80" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:used 1...1&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" parent="1" source="2" target="5" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="390" y="510" as="sourcePoint"/>
+                        <mxPoint x="530" y="510" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="&lt;b&gt;Procedural&lt;/b&gt;&lt;div&gt;&lt;b&gt;Request&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Entity&lt;/b&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;comic=0;strokeColor=#000000;strokeWidth=2;fillColor=#fddbc7;gradientColor=none;fontSize=14;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="240" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;b&gt;Procedural&lt;/b&gt;&lt;div&gt;&lt;b&gt;Request&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Information&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Entity&lt;/b&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;comic=0;strokeColor=#000000;strokeWidth=2;fillColor=#fddbc7;gradientColor=none;fontSize=14;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="400" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;b&gt;prov:&lt;br&gt;Association&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;comic=0;strokeColor=#000000;strokeWidth=2;fillColor=#D1E5F0;gradientColor=none;fontSize=14;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="600" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;b&gt;foaf:Agent&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;comic=0;strokeColor=#000000;strokeWidth=2;fillColor=#E6FFCC;gradientColor=none;fontSize=14;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="520" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="&lt;b&gt;Procedural&lt;/b&gt;&lt;div&gt;&lt;b&gt;Request&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Agent&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Role&lt;/b&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;comic=0;strokeColor=#000000;strokeWidth=2;fillColor=#E6FFCC;gradientColor=none;fontSize=14;fontColor=#000000;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="680" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:used 1...1&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" parent="1" source="2" target="10" edge="1">
+                    <mxGeometry x="0.3125" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="230" y="210" as="sourcePoint"/>
+                        <mxPoint x="570" y="270" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:used 1...1&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" parent="1" source="2" target="11" edge="1">
+                    <mxGeometry x="0.5417" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="220" as="sourcePoint"/>
+                        <mxPoint x="580" y="280" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:qualifiedAssociation 1...*&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" parent="1" source="2" target="13" edge="1">
+                    <mxGeometry x="0.4231" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="230" y="210" as="sourcePoint"/>
+                        <mxPoint x="570" y="590" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="20" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:agent 1...1&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" parent="1" source="13" target="14" edge="1">
+                    <mxGeometry x="0.3571" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="240" y="60" as="sourcePoint"/>
+                        <mxPoint x="580" y="440" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="420" y="660"/>
+                            <mxPoint x="420" y="580"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:hadRole 1...1&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" parent="1" source="13" target="15" edge="1">
+                    <mxGeometry x="0.3571" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="410" y="670" as="sourcePoint"/>
+                        <mxPoint x="570" y="590" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                        <Array as="points">
+                            <mxPoint x="420" y="660"/>
+                            <mxPoint x="420" y="740"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -76,6 +76,10 @@ The information about the status of motions and postulates is modelled as an act
 
 ### chpaf:ProceduralRequestInformationSubmitter
 
+### Figure
+
+![Procedural Request Information](./figures/procedural_request_information.svg "Procedural request information.")
+
 ### Example
 
 <aside class="example" title="Procedural Request Information">
