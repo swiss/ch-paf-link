@@ -52,6 +52,10 @@ The proposal how the Federal Council wants to handle the motions and postulates 
 
 ### chpaf:proceduralRequestProposal
 
+### Figure
+
+![Procedural Request Proposal](./figures/procedural_request_proposal.svg "Procedural request proposal.")
+
 ### Example
 
 <aside class="example" title="Procedural Request Proposal">
