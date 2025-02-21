@@ -46,7 +46,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="19" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:qualifiedAssociation 1...1&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" edge="1" parent="1" source="2" target="13">
+                <mxCell id="19" value="&lt;span style=&quot;background-color: rgb(209, 229, 240);&quot;&gt;&lt;font&gt;prov:qualifiedAssociation 1...*&lt;/font&gt;&lt;/span&gt;" style="endArrow=block;html=1;strokeColor=#000000;fontSize=14;fontColor=#000000;endFill=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;rounded=0;curved=0;" edge="1" parent="1" source="2" target="13">
                     <mxGeometry x="0.4231" width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="230" y="210" as="sourcePoint"/>
                         <mxPoint x="570" y="590" as="targetPoint"/>
