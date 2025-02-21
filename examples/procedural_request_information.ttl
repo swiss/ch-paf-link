@@ -2,6 +2,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity> a chpaf:ProceduralRequestInformationActivity ;
+    a chpaf:ProceduralRequestConnex ;
     prov:used <https://politics.ld.admin.ch/parliamentary-affair/18.4276> ;
     prov:used <https://politics.ld.admin.ch/parliamentary-affair/18.4276/entity> ;
     prov:used <https://politics.ld.admin.ch/procedural-request/information/2021/18.4238/entity> ;
