@@ -5,8 +5,8 @@ var respecConfig = {
     format: 'markdown', 
     latestVersion: null,
     maxTocLevel: 2,
-    preProcess: [loadTurtle],
-    postProcess: [populateOntology, jumpTo, window.respecMermaid.createFigures],
+    preProcess: [],
+    postProcess: [populateOntology],
     github: {
       repoURL: "https://github.com/swiss/ch-paf-link",
       branch: "main", // alternative branch

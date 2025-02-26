@@ -3,164 +3,20 @@
 
 <head>
   <meta charset='utf-8'>
+  
   <script src="https://linkeddata.github.io/rdflib.js/dist/rdflib.min.js"></script>
-  <script>
-    async function populateOntology() {
-      const rdf = $rdf;
-      const store = rdf.graph();
-      const ttlFileUrl = './ch-paf-link.ttl';
-      const baseUri = new URL(ttlFileUrl, window.location.href).href;
-      const contentType = 'text/turtle';
+  <script src="ontology.js"></script>
 
-      let prefixes = {};
-      try {
-        const response = await fetch(ttlFileUrl);
-        if (!response.ok) {
-          throw new Error(`Failed to load TTL file: ${response.statusText}`);
-        }
-        const ttlData = await response.text();
-
-        const prefixRegex = /@prefix\s+([a-zA-Z0-9\-]+):\s+<([^>]+)>/g;
-        let match;
-        while ((match = prefixRegex.exec(ttlData)) !== null) {
-          prefixes[match[1]] = match[2];
-        }
-
-        rdf.parse(ttlData, store, baseUri, contentType);
-
-        function applyPrefix(uri) {
-          for (const prefix in prefixes) {
-            if (uri.startsWith(prefixes[prefix])) {
-              return uri.replace(prefixes[prefix], `${prefix}:`);
-            }
-          }
-          return uri;
-        }
-
-        // Find all sections that start with chpaf-...
-        const sections = document.querySelectorAll("section[id^='chpaf-']");
-        sections.forEach(section => {
-          // Find all headers (h1–h6) within the section
-          let headers = section.querySelectorAll("h1, h2, h3, h4, h5, h6");
-
-          // Iterate through each header and extract text after <bdi>
-
-          let subjectUri = null;
-          headers.forEach(header => {
-            subjectUri = header.childNodes[1]?.textContent.trim(); // Get text node after <bdi>
-          });
-
-          // Adjust the SPARQL query to get predicates and objects for the subject
-          const sparqlQuery = `
-                  
-            PREFIX chpaf: <https://ch.paf.link/>
-            
-            SELECT ?predicate ?object WHERE {
-              ${subjectUri} ?predicate ?object .
-            }
-            `;
-
-          const query = rdf.SPARQLToQuery(sparqlQuery, false, store);
-          const queryResults = store.querySync(query);
-
-          // Create the table
-          const table = document.createElement('table');
-          table.classList.add('table', 'table-bordered', 'table-striped');
-
-          const thead = document.createElement('thead');
-          const headerRow = document.createElement('tr');
-          const th1 = document.createElement('th');
-          th1.textContent = 'Predicate';
-          const th2 = document.createElement('th');
-          th2.textContent = 'Object';
-          headerRow.appendChild(th1);
-          headerRow.appendChild(th2);
-          thead.appendChild(headerRow);
-          table.appendChild(thead);
-
-          const tbody = document.createElement('tbody');
-          queryResults.forEach(result => {
-            const row = document.createElement('tr');
-            const td1 = document.createElement('td');
-            td1.textContent = applyPrefix(result['?predicate'].value);
-            const td2 = document.createElement('td');
-            td2.textContent = applyPrefix(result['?object'].value);
-            row.appendChild(td1);
-            row.appendChild(td2);
-            tbody.appendChild(row);
-          });
-          table.appendChild(tbody);
-
-          // Insert the table after the heading
-          section.appendChild(table);
-        });
-      }
-
-      catch (error) {
-        console.error('Error generating table:', error);
-      }
-    }
-
-    function jumpTo(config) {
-      let element = document.getElementById(location.pathname.substr(location.pathname.lastIndexOf("/") + 1));
-      if (element !== null && typeof element !== "undefined")
-        element.scrollIntoView(true)
-    }
-
-    async function loadTurtle() {
-      //this is the function you call in 'preProcess', to load the highlighter
-      const worker = await new Promise(resolve => {
-        require(["core/worker"], ({ worker }) => resolve(worker));
-      });
-      const action = "highlight-load-lang";
-      const langURL =
-        "https://swiss.github.io/paf-link/turtle.js";
-      const propName = "turtle"; // This funtion is defined in the highlighter being loaded
-      const lang = "turtle"; // this is the class you use to identify the language
-      worker.postMessage({ action, langURL, propName, lang });
-      return new Promise(resolve => {
-        worker.addEventListener("message", function listener({ data }) {
-          const { action: responseAction, lang: responseLang } = data;
-          if (responseAction === action && responseLang === lang) {
-            worker.removeEventListener("message", listener);
-            resolve();
-          }
-        });
-      });
-    }
-  </script>
-  <script type="text/javascript" src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
-  <script class="remove" src="https://cdn.jsdelivr.net/gh/w3c/respec-mermaid@1.1.0/dist/main.js"></script>
+  <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
   <script class='remove'>
     var module = {}
   </script>
-  <script type="text/javascript" src='config.js' class='remove'></script>
-  <title>ch.paf.link: Swiss Public Affairs</title>
-  <style>
-    /* Custom table styles */
-    section table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    section table th {
-        background-color: #00a400;
-        color: white;
-        padding: 8px;
-        text-align: left;
-    }
-    section table tr:nth-child(odd) {
-        background-color: #f2f2f2;
-    }
-    section table tr:nth-child(even) {
-        background-color: #ffffff;
-    }
-    section table th, section table td {
-        width: 50%;
-        padding: 5px;
-        text-align: left;
-    }
-  </style>
+  <script src='config.js' class='remove'></script>
 
+  <link rel="stylesheet" href="style.css">
+  
+  <title>ch.paf.link: Swiss Public Affairs</title>
+  
 </head>
 
 <body>

@@ -1,0 +1,22 @@
+/* Custom table styles */
+section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+section table th {
+    background-color: #00a400;
+    color: white;
+    padding: 8px;
+    text-align: left;
+}
+section table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+section table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+section table th, section table td {
+    width: 50%;
+    padding: 5px;
+    text-align: left;
+}
