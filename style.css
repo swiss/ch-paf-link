@@ -20,3 +20,23 @@ section table th, section table td {
     padding: 5px;
     text-align: left;
 }
+
+.hljs-type {
+    color: #458;
+}
+
+.hljs-symbol {
+    color: #990073;
+}
+
+.hljs-built_in {
+    color: #00a8e0;
+}
+
+.hljs-literal {
+    color: #212821;
+}
+
+.hljs-string {
+    color: rgb(125, 14, 236);
+}

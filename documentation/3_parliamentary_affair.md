@@ -15,5 +15,14 @@ If an activity is related to a specific parliamentary affair, the activity needs
 ### Example
 
 <aside class="example" title="National Parliament Identifier">
-    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/national_parliament_identifier.ttl" target="_blank">Turtle file</a>.
+
+```turtle
+@prefix chpaf: <https://ch.paf.link/> .
+
+<https://politics.ld.admin.ch/parliamentary-affair/17.4017> a chpaf:ParliamentaryAffairIdentifierEntity ;
+    chpaf:parliamentaryAffairIdentifier "17.4017"@de .
+```
+
+<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/national_parliament_identifier.ttl" target="_blank">Example as .ttl file</a>.
+
 </aside>

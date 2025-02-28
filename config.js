@@ -6,7 +6,7 @@ var respecConfig = {
     latestVersion: null,
     maxTocLevel: 2,
     preProcess: [],
-    postProcess: [populateOntology],
+    postProcess: [populateOntology, hljs.highlightAll],
     github: {
       repoURL: "https://github.com/swiss/ch-paf-link",
       branch: "main", // alternative branch

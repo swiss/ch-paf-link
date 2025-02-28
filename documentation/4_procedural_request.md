@@ -33,7 +33,19 @@ The yearly report concerning the status of the motions and postulates is modelle
 ### Example
 
 <aside class="example" title="Procedural Request Report">
-    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_report.ttl" target="_blank">Turtle file</a>.
+
+```turtle
+@prefix chpaf: <https://ch.paf.link/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://politics.ld.admin.ch/procedural-request/report/2021/activity> a chpaf:ProceduralRequestReportActivity ;
+    prov:used <https://politics.ld.admin.ch/procedural-request/report/2021/entity> ;
+    chpaf:proceduralRequestReportYear "2021"^^xsd:gYear ;
+    prov:wasInformedBy <https://politics.ld.admin.ch/procedural-request/proposal/2021/19.4092/activity>, <https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity> .
+```
+
+<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_report.ttl" target="_blank">Example as .ttl file</a>.
 </aside>
 
 ## Proposal
@@ -59,7 +71,29 @@ The proposal how the Federal Council wants to handle the motions and postulates 
 ### Example
 
 <aside class="example" title="Procedural Request Proposal">
-    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_proposal.ttl" target="_blank">Turtle file</a>.
+
+```turtle
+@prefix chpaf: <https://ch.paf.link/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://politics.ld.admin.ch/procedural-request/proposal/2021/19.4092/activity> a chpaf:ProceduralRequestProposalActivity ;
+    prov:used <https://politics.ld.admin.ch/parliamentary-affair/19.4092> ;
+    prov:used <https://politics.ld.admin.ch/parliamentary-affair/19.4092/entity> ;
+    prov:used <https://politics.ld.admin.ch/procedural-request/proposal/2021/19.4092/entity> ;
+    prov:qualifiedAssociation <https://politics.ld.admin.ch/procedural-request/proposal/2021/19.4092/activity/submitter> .
+
+<https://politics.ld.admin.ch/procedural-request/proposal/2021/19.4092/entity> a chpaf:ProceduralRequestProposalEntity ;
+    chpaf:proceduralRequestProposal "Postulato adempiuto con il rapporto del 10 dicembre 2021..."@it ;
+    chpaf:proceduralRequestProposal "Rapport du 10 décembre 2021..."@fr ;
+    chpaf:proceduralRequestProposal "Postulatsbericht vom 10. Dezember 2021..."@de .
+
+<https://politics.ld.admin.ch/procedural-request/proposal/2021/19.4092/activity/submitter> a prov:Association ;
+    prov:agent <https://ld.admin.ch/office/II.1.2> ;
+    prov:hadRole chpaf:ProceduralRequestProposalSubmitter .
+```
+
+<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_proposal.ttl" target="_blank">Example as .ttl file</a>.
 </aside>
 
 ## Information
@@ -83,5 +117,28 @@ The information about the status of motions and postulates is modelled as an act
 ### Example
 
 <aside class="example" title="Procedural Request Information">
-    <a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_information.ttl" target="_blank">Turtle file</a>.
+
+```turtle
+@prefix chpaf: <https://ch.paf.link/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity> a chpaf:ProceduralRequestInformationActivity ;
+    a chpaf:ProceduralRequestConnex ;
+    prov:used <https://politics.ld.admin.ch/parliamentary-affair/18.4276> ;
+    prov:used <https://politics.ld.admin.ch/parliamentary-affair/18.4276/entity> ;
+    prov:used <https://politics.ld.admin.ch/procedural-request/information/2021/18.4238/entity> ;
+    prov:qualifiedAssociation <https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity/submitter> .
+
+<https://politics.ld.admin.ch/procedural-request/information/2021/18.4238/entity> a chpaf:ProceduralRequestInformationEntity ;
+    chpaf:proceduralRequestInformation "Le mozioni hanno portato a diversi lavori di attuazione per la creazione e la pubblicazione di interfacce elettroniche (le cosiddette API, Application Programming Interface)..."@it ;
+    chpaf:proceduralRequestInformation "Les motions ont conduit à différents travaux de mise en œuvre en vue de la création et de la publication d’interfaces électroniques (API)..."@fr ;
+    chpaf:proceduralRequestInformation "Die Motionen führten zu verschiedenen Umsetzungsarbeiten zur Schaffung und Veröffentlichung elektronischer Schnittstellen (API)..."@de .
+
+<https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity/submitter> a prov:Association ;
+    prov:agent <https://ld.admin.ch/FCh> ;
+    prov:hadRole chpaf:ProceduralRequestInformationSubmitter .
+```
+
+<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_information.ttl" target="_blank">Example as .ttl file</a>.
 </aside>
