@@ -1,93 +1,89 @@
-@prefix : <https://example.com/> .
-@prefix paf: <https://paf.link/> .
-@prefix chpaf: <https://ch.paf.link/> . # Swiss specific extension
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix schema: <http://schema.org/> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dcterm: <http://purl.org/dc/terms/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix paf: <https://paf.link/>.
+@prefix chpaf: <https://ch.paf.link/>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix schema: <http://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 
-:ActID-1 a chpaf:OCoRegistrationActivity;
-    prov:startedAtTime "2023-10-08T14:23:00Z"^^xsd:dateTime.
+# The registration activity is used to create the parliamentary affair identifier entity, so that no entity comes "out of the blue".
+<https://politics.ld.admin.ch/identifier/curia/23.4022/registration> a chpaf:ParliamentaryAffairRegistrationActivity.
 
-:OCo_2023-2118 a chpaf:OCoIdentifierEntity;
-    prov:wasGeneratedBy :ActID-1;
-    schema:identifier "OCo_2023-2118".
+<https://politics.ld.admin.ch/identifier/curia/23.4022> a chpaf:ParliamentaryAffairIdentifierEntity;
+    schema:identifier "23.4022";
+    prov:wasGeneratedBy <https://politics.ld.admin.ch/identifier/curia/23.4022/registration>.
 
-:ActID-2 a chpaf:OCoConsultationCreationActivity ;
-  	prov:wasInformedBy :ActID-1;
-	prov:startedAtTime "2023-10-09T14:23:00Z";
-    prov:used :OCo_2023-2118.
+# The consultation creation activity creates the consultation identifier entity and the consultation content entity.
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creation-activity> a chpaf:OCoCreationActivity;
+    prov:startedAtTime "2023-10-03T22:00:00.0000000Z";
+    prov:wasInformedBy <https://politics.ld.admin.ch/identifier/curia/23.4022/registration-activity>.
 
-:EntID-1 a chpaf:OCoConsultationEntity;
-    prov:wasGeneratedBy :ActID-2;
-    prov:startedAtTime "2023-08-01T14:23:00Z";
-    chpaf:oCoTitle "Titel der ÄK" @de;
-    chpaf:oCoRequestTo "Antrag an" @de;
-    chpaf:oCoDate "Datum" @de;
-    chpaf:oCoIntroduction "Einleitung" @de;
-    chpaf:oCoIssues "Problemstellung" @de;
-    chpaf:oCoModification "Änderung" @de;
-    chpaf:oCoConsequences "Auswirkungen" @de;
-    chpaf:oCoRelationshipToLaW "Verhältnis zum Recht" @de;
-    chpaf:oCoDeadlineForPublication "Frist für die Veröffentlichung"  @de;
-    chpaf:oCoComments "Stellungnahmen"  @de;
-    chpaf:oCoRequestFor "Antrag von"  @de;
-    chpaf:oCoAnnexes "Beilagen" @de.
+<https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157> a chpaf:OCoIdentifierEntity;
+    schema:identifier "OCo_2023.2157";
+    prov:wasGeneratedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creation-activity>.
 
-:ActID-3 a chpaf:OCoConsultationRegistrationActivity ;
-    prov:wasInformedBy :ActID-2;
-    prov:used :OCo_2023-2118, :EntID-1;
-    prov:qualifiedAssociation [
-        a prov:Association;
-        prov:agent :arthur_registro; #  person registrating the consultation
-        prov:hadRole chpaf:OCoConsultationRegistrar;
-    ].
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity> a chpaf:OCoEntity;
+    schema:description "Description of the consultation";
+    schema:name "Title of the consultation";
+    prov:wasGeneratedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creation-activity>.
 
-:ActID-4 a chpaf:OCoConsultationActivity ;
-	prov:wasInformedBy :ActID-3;
-    prov:used :OCo_2023-2118, :EntID-1;
-	prov:startedAtTime "2023-10-19T00:00:00Z"; # official start of the consultation
-	prov:endedAtTime "2023-11-01T00:00:00Z"; # deadline for the inputs of the consultation
-    prov:qualifiedAssociation [
-        a prov:Association;
-        prov:agent <https://ld.admin.ch/office/III.1.4>; # Staatssekretariat für Migration
-        prov:hadRole chpaf:OCoConsultationSubmitter;
-    ];
-    prov:qualifiedAssociation [
-        a prov:Association;
-        prov:agent <https://ld.admin.ch/office/III.1.2>; # Bundesamt für Justiz
-        prov:hadRole chpaf:OCoConsultationReceiver;
-    ];
-    prov:qualifiedAssociation [
-        a prov:Association;
-        prov:agent <https://ld.admin.ch/office/III.1.3>; # Bundesamt für Polizei
-        prov:hadRole chpaf:OCoConsultationReceiver;
-    ].
+# the consultation registration activity is used to register the consultation in the it system that handles the process (the registration date is not the same as the real start of the consultation).
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/registration-activity> a chpaf:OCoRegistrationActivity;
+    prov:used
+        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
+        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
+    prov:startedAtTime "2023-10-03T22:00:00.0000000Z";
+    prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creation-activity>. 
 
-:ActID-5 a chpaf:OCoCommentActivity ;
-	prov:wasInformedBy :ActID-4;
-	prov:used :OCo_2023-2118, :EntID-1;
-  	prov:qualifiedAssociation [
-        	a prov:Association;
-        	prov:agent <https://ld.admin.ch/office/III.1.2>; # BJ
-        	prov:hadRole chpaf:OCoCommentMaker;
-  	].
+# The consultation activity represents the actual consultation process, with start and end date, all the information in the entities and the responsible office as creator.
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/activity> a chpaf:OCoActivity;
+    prov:qualifiedAssociation <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creator>;
+    prov:used 
+        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
+        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
+        
+    prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/registration-activity>;
+    prov:endedAtTime "2023-10-19T22:00:00.0000000Z";
+    prov:startedAtTime "2023-10-05T22:00:00.0000000Z".
 
-:EntID-2 a chpaf:OCoCommentEntity;
-    prov:wasGeneratedBy :ActID-5;
-    schema:description "It is very important to include also..."@en.
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creator> a prov:Association;
+    prov:agent <https://ld.admin.ch/office/III.1.4>;
+    prov:hadRole chpaf:OCoCreator.
 
-:ActID-6 a chpaf:OCoCommentActivity ;
-	prov:wasInformedBy :ActID-4;
-	prov:used :OCo_2023-2118, :EntID-1;
-  	prov:qualifiedAssociation [
-        	a prov:Association;
-        	prov:agent <https://ld.admin.ch/office/III.1.3>; # BPOL
-        	prov:hadRole chpaf:OCoCommentMaker;
-  	].
+# Answers to the consultation
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creation-activity/1> a chpaf:OCoCommentCreationActivity;
+    prov:qualifiedAssociation <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creator/1>;
+    prov:used 
+        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
+        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
+    prov:startedAtTime "2023-10-18T09:00:00.0000000Z";
+    prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/activity>.
 
-:EntID-3 a chpaf:OCoCommentEntity;
-    prov:wasGeneratedBy :ActID-6;
-    schema:description "It is very important to exclude also..."@en.
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creator/1> a prov:Association;
+    prov:agent <https://ld.admin.ch/office/III.2.2.2>;
+    prov:hadRole chpaf:OCoCommentCreator.
+
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-entity-1> a chpaf:OCoCommentEntity;
+    schema:description "The comment is ...";
+    prov:wasGeneratedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creation-activity/1>.
+
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creation-activity/2> a chpaf:OCoCommentCreationActivity;
+    prov:qualifiedAssociation <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creator/2>;
+    prov:used 
+        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
+        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
+    prov:startedAtTime "2023-10-18T10:00:00.0000000Z";
+    prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/activity>.
+
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creator/2> a prov:Association;
+    prov:agent <https://ld.admin.ch/ou/10002693>;
+    prov:hadRole chpaf:OCoCommentCreator.
+
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-entity-2> a chpaf:OCoCommentEntity;
+    schema:description "The comment is ...";
+    prov:wasGeneratedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creation-activity/2>.
