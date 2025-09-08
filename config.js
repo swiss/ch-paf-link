@@ -55,5 +55,3 @@ var respecConfig = {
       },
     ],
   };
-
-module.exports = respecConfig
