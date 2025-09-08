@@ -8,18 +8,18 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 
 # The registration activity is used to create the parliamentary affair identifier entity, so that no entity comes "out of the blue".
-<https://politics.ld.admin.ch/identifier/curia/23.4022/registration> a chpaf:ParliamentaryAffairRegistrationActivity.
+<https://politics.ld.admin.ch/parliamentary-affair/23.4022/registration-activity> a chpaf:ParliamentaryAffairRegistrationActivity.
 
-<https://politics.ld.admin.ch/identifier/curia/23.4022> a chpaf:ParliamentaryAffairIdentifierEntity;
+<https://politics.ld.admin.ch/parliamentary-affair/23.4022> a chpaf:ParliamentaryAffairIdentifierEntity;
     schema:identifier "23.4022";
-    prov:wasGeneratedBy <https://politics.ld.admin.ch/identifier/curia/23.4022/registration>.
+    prov:wasGeneratedBy <https://politics.ld.admin.ch/parliamentary-affair/23.4022/registration-activity>.
 
 # The consultation creation activity creates the consultation identifier entity and the consultation content entity.
 <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creation-activity> a chpaf:OCoCreationActivity;
     prov:startedAtTime "2023-10-03T22:00:00.0000000Z";
-    prov:wasInformedBy <https://politics.ld.admin.ch/identifier/curia/23.4022/registration-activity>.
+    prov:wasInformedBy <https://politics.ld.admin.ch/parliamentary-affair/23.4022/registration-activity>.
 
-<https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157> a chpaf:OCoIdentifierEntity;
+<https://politics.ld.admin.ch/office-consultation/OCo_2023.2157> a chpaf:OCoIdentifierEntity;
     schema:identifier "OCo_2023.2157";
     prov:wasGeneratedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creation-activity>.
 
@@ -31,8 +31,8 @@
 # the consultation registration activity is used to register the consultation in the it system that handles the process (the registration date is not the same as the real start of the consultation).
 <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/registration-activity> a chpaf:OCoRegistrationActivity;
     prov:used
-        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
-        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/parliamentary-affair/23.4022>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157>,
         <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
     prov:startedAtTime "2023-10-03T22:00:00.0000000Z";
     prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creation-activity>. 
@@ -41,8 +41,8 @@
 <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/activity> a chpaf:OCoActivity;
     prov:qualifiedAssociation <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/creator>;
     prov:used 
-        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
-        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/parliamentary-affair/23.4022>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157>,
         <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
         
     prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/registration-activity>;
@@ -57,8 +57,8 @@
 <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creation-activity/1> a chpaf:OCoCommentCreationActivity;
     prov:qualifiedAssociation <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creator/1>;
     prov:used 
-        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
-        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/parliamentary-affair/23.4022>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157>,
         <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
     prov:startedAtTime "2023-10-18T09:00:00.0000000Z";
     prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/activity>.
@@ -74,8 +74,8 @@
 <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creation-activity/2> a chpaf:OCoCommentCreationActivity;
     prov:qualifiedAssociation <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/comment-creator/2>;
     prov:used 
-        <https://politics.ld.admin.ch/identifier/curia/23.4022>,
-        <https://politics.ld.admin.ch/identifier/oco/OCo_2023.2157>,
+        <https://politics.ld.admin.ch/parliamentary-affair/23.4022>,
+        <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157>,
         <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/entity>;
     prov:startedAtTime "2023-10-18T10:00:00.0000000Z";
     prov:wasInformedBy <https://politics.ld.admin.ch/office-consultation/OCo_2023.2157/activity>.
