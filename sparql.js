@@ -1,11 +1,9 @@
-function addSparqlLinks(doc) {
+function addSparqlLinks() {
   const defaultEndpoint = "https://ld.admin.ch/query";
 
-  doc.querySelectorAll("pre.sparql").forEach(pre => {
+  document.querySelectorAll("pre.sparql").forEach(pre => {
     const code = pre.textContent.trim();
     const encodedQuery = encodeURIComponent(code);
-
-    // check if data-endpoint is set
     const endpoint = pre.getAttribute("data-endpoint") || defaultEndpoint;
 
     const link = document.createElement("a");
