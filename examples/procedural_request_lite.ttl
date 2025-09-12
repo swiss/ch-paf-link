@@ -1,0 +1,36 @@
+@prefix chpaf: <https://ch.paf.link/> .
+@prefix paf: <https://paf.link/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# identifier entities - no creation
+<https://politics.ld.admin.ch/parliamentary-affair/18.4276> a paf:IdentifierEntity, chpaf:ParliamentaryAffair ;
+    schema:identifier "18.4276" .
+
+<https://politics.ld.admin.ch/parliamentary-affair/18.4238> a paf:IdentifierEntity, chpaf:ParliamentaryAffair ;
+    schema:identifier "18.4238" .
+
+# mopo entity - no creation
+<https://politics.ld.admin.ch/parliamentary-affair/18.4276/entity> a chpaf:ProceduralRequestEntity ;
+    chpaf:proceduralRequestTitle "Erleichterter Informationsaustausch durch die Einführung von elektronischen Schnittstellen in der Bundesverwaltung"@de ;
+    chpaf:proceduralRequestText "Der Bundesrat wird beauftragt, den direkten Informationsaustausch innerhalb der Bundesverwaltung..."@de ;
+    chpaf:proceduralRequestType <https://ch.paf.link/vocabulary/procedural-request-type/motion> ;
+    # new connex relation on entity level
+    chpaf:proceduralRequestConnexTo <https://politics.ld.admin.ch/parliamentary-affair/18.4238> .
+
+# mopo information entity - no creation
+<https://politics.ld.admin.ch/procedural-request/information/2021/18.4238/entity> a chpaf:ProceduralRequestInformationEntity ;
+    chpaf:proceduralRequestInformation "Die Motionen führten zu verschiedenen Umsetzungsarbeiten zur Schaffung und Veröffentlichung elektronischer Schnittstellen (API): ..."@de .
+
+# information activity
+<https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity> a paf:InformationActivity, chpaf:ProceduralRequest, chpaf:ProceduralRequestConnex ;
+    prov:qualifiedAssociation <https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity/submitter> ;
+    prov:atTime "2021"^^xsd:gYear ;
+    prov:used 
+    <https://politics.ld.admin.ch/parliamentary-affair/18.4276>, <https://politics.ld.admin.ch/parliamentary-affair/18.4276/entity>, 
+    <https://politics.ld.admin.ch/procedural-request/information/2021/18.4238/entity> .
+
+<https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity/submitter> a prov:Association ;
+    prov:agent "" ;
+    prov:hadRole chpaf:ProceduralRequestInformationSubmitter .
