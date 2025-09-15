@@ -1,0 +1,23 @@
+# This file is to collect the metadata for the dcat entry into opendata.swiss
+
+Title:
+  de: Bericht Motionen und Postulate
+  fr: Rapport motions et postulats
+  it: Rapporto mozioni e postulati
+
+Description:
+  de: |
+    In Zusammenarbeit mit den Departementen erstellt die Sektion Bundesratsgeschäfte (SBRG) jährlich den Bericht Motionen und Postulate. Er enthält einen Gesamtüberblick über das Geschehen aller vom Parlament angenommenen Motionen und Postulate. Er gibt Auskunft darüber, welche Vorstösse vom Bundesrat noch zu erfüllen sind und welche vom Parlament abgeschrieben werden können.
+  fr: |
+    La section des affaires du Conseil fédéral (SACF) établit chaque année, en collaboration avec les départements, le rapport «Motions et postulats des Chambres fédérales». Ce rapport donne une vue d’ensemble du traitement de toutes les motions et de tous les postulats adoptés par le Parlement. Il énumère les interventions auxquelles le Conseil fédéral n’a pas encore donné suite et celles que le Parlement peut classer.
+  it: |
+    In collaborazione con i dipartimenti la sezione affari del Consiglio federale (SACF) allestisce ogni anno il Rapporto mozioni e postulati che offre una panoramica sullo stato di adempimento delle mozioni e dei postulati accolti dal Parlamento. Fornisce inoltre informazioni in merito agli interventi non ancora adempiuti dal Consiglio federale e a quelli che il Parlamento può togliere dal ruolo.
+
+Distributionen:
+  - type: SPARQL
+    Name:
+      de: Bericht Motionen und Postulate - 2023
+      fr: Rapport motions et postulats - 2023
+      it: Rapporto mozioni e postulati - 2023
+    accessURL: |
+      https://lindas.admin.ch/sparql/#query=PREFIX%20chpaf%3A%20%3Chttps%3A%2F%2Fch.paf.link%2F%3E%0APREFIX%20prov%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23%3E%0APREFIX%20schema%3A%20%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0A%0ASELECT%20%3Fid%20%3Fconn_id%20%3Ftext_de%20%3Ftext_fr%20%3Ftext_it%20%3Ftype%20%3Fsubmitter%20%20FROM%20%3Chttps%3A%2F%2Flindas.admin.ch%2Ffch%2Fproceduralrequest%3E%20WHERE%20%7B%0A%20%20%20%20%0A%20%20%20%20BIND%20(%222023%22%5E%5Exsd%3AgYear%20as%20%3Fyear)%0A%0A%20%20%20%20%3FActivity%20prov%3Aused%20%3FEntity%20%3B%0A%20%20%20%20%20%20%20%20prov%3Aused%2Fchpaf%3AparliamentaryAffairIdentifier%20%3Fid%20%3B%0A%20%20%20%20%20%20%20%20prov%3AqualifiedAssociation%20%3Fassociation.%0A%20%20%20%20%3FEntity%20%3Finfo_prop%20%3Ftext_de%2C%20%3Ftext_fr%2C%20%3Ftext_it%20.%0A%20%20%20%20VALUES%20%3Finfo_prop%20%7B%20chpaf%3AproceduralRequestProposal%20chpaf%3AproceduralRequestInformation%20%7D%0A%20%20%20%20%0A%20%20%20%20%3Fassociation%20prov%3AhadRole%20%3Frole%3B%0A%20%20%20%20%20%20%20%20prov%3Aagent%20%3Fsubmitter.%0A%0A%20%20%20%20VALUES%20%3Frole%20%7B%20chpaf%3AProceduralRequestProposalSubmitter%20chpaf%3AProceduralRequestInformationSubmitter%20%7D%0A%0A%20%20%20%20OPTIONAL%20%7B%0A%20%20%20%20%20%20%20%20%3FActivity%20a%20chpaf%3AProceduralRequestConnex%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20prov%3Aused%2F%5Eprov%3Aused%20%3FMainActivity.%0A%20%20%20%20%20%20%20%20%3FMainActivity%20prov%3Aused%2Fchpaf%3AparliamentaryAffairIdentifier%20%3Fconn_id.%0A%20%20%20%20%20%20%20%20%3FReportActivity%20prov%3AwasInformedBy%20%3FMainActivity.%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20FILTER%20NOT%20EXISTS%20%7B%3FMainActivity%20a%20chpaf%3AProceduralRequestConnex.%7D%0A%20%20%20%20%7D%0A%0A%20%20%20%20%3FReportActivity%20prov%3AwasInformedBy%20%3FActivity%3B%0A%20%20%20%20%20%20%20%20chpaf%3AproceduralRequestReportYear%20%3Fyear.%0A%0A%20%20%20%20BIND%20(IF%20(EXISTS%20%7B%20%3FActivity%20a%20chpaf%3AProceduralRequestProposalActivity%20%7D%2C%20%22proposal%22%2C%20%22information%22)%20AS%20%3Ftype)%0A%20%20%20%20%0A%20%20%20%20FILTER(lang(%3Ftext_de)%20%3D%20%22de%22)%0A%20%20%20%20FILTER(lang(%3Ftext_fr)%20%3D%20%22fr%22)%0A%20%20%20%20FILTER(lang(%3Ftext_it)%20%3D%20%22it%22)%0A%0A%7D&endpoint=https%3A%2F%2Flindas.admin.ch%2Fquery&requestMethod=POST&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=application%2Fn-triples%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table
