@@ -18,15 +18,7 @@ The [parliamentary services of the Federal Assembly](https://www.parlament.ch/en
 
 ## Report
 
-The yearly report concerning the status of the motions and postulates is modelled as an activity:
-
-### chpaf:ProceduralRequestReportActivity
-
-### chpaf:ProceduralRequestReportEntity
-
-### chpaf:proceduralRequestReportYear
-
-### Figure
+The yearly report concerning the status of the motions and postulates is modelled as an activity with class `chpaf:ProceduralRequestReportActivity` that links to the correspoding year of the report via `chpaf:proceduralRequestReportYear`, see the following figure:
 
 ![Procedural Requests Report](./figures/procedural_request_report.svg "Procedural requests report.")
 
@@ -45,26 +37,65 @@ The yearly report concerning the status of the motions and postulates is modelle
     prov:wasInformedBy <https://politics.ld.admin.ch/procedural-request/proposal/2021/19.4092/activity>, <https://politics.ld.admin.ch/procedural-request/information/2021/18.4276/activity> .
 ```
 
-<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_report.ttl" target="_blank">Example as .ttl file</a>.
 </aside>
+
+### Actual Use
+
+The following sparql query shows all the reports:
+
+```sparql
+PREFIX chpaf: <https://ch.paf.link/>
+
+SELECT ?activity ?year WHERE {
+ ?activity a chpaf:ProceduralRequestReportActivity ;
+  chpaf:proceduralRequestReportYear ?year .
+}
+```
+
+The following query shows the report of a single year in tabular form mimicing the original PDF report:
+
+```sparql
+PREFIX chpaf: <https://ch.paf.link/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?id ?conn_id ?year ?text ?type ?submitter WHERE {
+    
+    ?ReportActivity prov:wasInformedBy ?Activity ;
+        chpaf:proceduralRequestReportYear ?year .
+  
+    ?Activity prov:used ?Entity ;
+        prov:used/chpaf:parliamentaryAffairIdentifier ?id ;
+        prov:qualifiedAssociation ?association .
+    
+    VALUES ?info_prop { chpaf:proceduralRequestProposal chpaf:proceduralRequestInformation }
+    ?Entity ?info_prop ?text .
+    FILTER(lang(?text) = "de")
+    
+    VALUES ?role { chpaf:ProceduralRequestProposalSubmitter chpaf:ProceduralRequestInformationSubmitter }
+    ?association prov:hadRole ?role ;
+    	prov:agent/schema:name ?submitter .
+    FILTER(lang(?submitter) = "de")
+
+
+    # for getting the connex id if it exists (not very elegant, but works)
+    OPTIONAL {
+        ?Activity a chpaf:ProceduralRequestConnex ;
+            prov:used/^prov:used ?MainActivity .
+        ?MainActivity prov:used/chpaf:parliamentaryAffairIdentifier ?conn_id .
+        ?ReportActivity prov:wasInformedBy ?MainActivity .
+        
+        FILTER NOT EXISTS {?MainActivity a chpaf:ProceduralRequestConnex .}
+    }
+
+    BIND (IF (EXISTS { ?Activity a chpaf:ProceduralRequestProposalActivity }, "proposal", "information") AS ?type)
+}
+```
 
 ## Proposal
 
-The proposal how the Federal Council wants to handle the motions and postulates is modelled as an activity:
-
-### chpaf:ProceduralRequestProposalActivity
-
-### chpaf:ProceduralRequestConnex
-
-### chpaf:ProceduralRequestEntity
-
-### chpaf:ProceduralRequestProposalEntity
-
-### chpaf:ProceduralRequestProposalSubmitter
-
-### chpaf:proceduralRequestProposal
-
-### Figure
+The proposal how the Federal Council wants to handle the motions and postulates is modelled as an activity according to the following figure:
 
 ![Procedural Request Proposal](./figures/procedural_request_proposal.svg "Procedural request proposal.")
 
@@ -93,24 +124,25 @@ The proposal how the Federal Council wants to handle the motions and postulates 
     prov:hadRole chpaf:ProceduralRequestProposalSubmitter .
 ```
 
-<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_proposal.ttl" target="_blank">Example as .ttl file</a>.
 </aside>
+
+### Actual Use
+
+The following sparql query shows all the proposal activities with the actual proposal text in all available languages:
+
+```sparql
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX chpaf: <https://ch.paf.link/>
+
+SELECT ?activity ?proposal WHERE {
+ ?activity a chpaf:ProceduralRequestProposalActivity ;
+  prov:used/chpaf:proceduralRequestProposal ?proposal .
+}
+```
 
 ## Information
 
-The information about the status of motions and postulates is modelled as an activity:
-
-### chpaf:ProceduralRequestInformationActivity
-
-### chpaf:ProceduralRequestConnex
-
-### chpaf:ProceduralRequestEntity
-
-### chpaf:ProceduralRequestInformationEntity
-
-### chpaf:ProceduralRequestInformationSubmitter
-
-### Figure
+The information about the status of motions and postulates is modelled as an activity according to the following figure:
 
 ![Procedural Request Information](./figures/procedural_request_information.svg "Procedural request information.")
 
@@ -140,5 +172,18 @@ The information about the status of motions and postulates is modelled as an act
     prov:hadRole chpaf:ProceduralRequestInformationSubmitter .
 ```
 
-<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/procedural_request_information.ttl" target="_blank">Example as .ttl file</a>.
 </aside>
+
+### Actual Use
+
+The following sparql query shows all the information activities with the actual information text in all available languages:
+
+```sparql
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX chpaf: <https://ch.paf.link/>
+
+SELECT ?activity ?information WHERE {
+ ?activity a chpaf:ProceduralRequestInformationActivity ;
+  prov:used/chpaf:proceduralRequestInformation ?information .
+}
+```

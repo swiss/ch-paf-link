@@ -1,14 +1,8 @@
-# Parliamentary Affairs
+# Parliamentary Affair
 
 ## National Parliament Identifier
 
-If an activity is related to a specific parliamentary affair, the activity needs to reference this affair. The parliamentary affairs of the Swiss Federal Assembly are described with the following classes and properties:
-
-### chpaf:ParliamentaryAffairIdentifierEntity
-
-### chpaf:parliamentaryAffairIdentifier
-
-### Figure
+If an activity is related to a specific Swiss national parliamentary affair, the activity needs to reference this affair (see [identifier entities in paf.link](https://paf.link#IdentifierEntities)) via `prov:used` to the corresponding `chpaf:ParliamentaryAffairIdentifierEntity`. These entities use only `chpaf:parliamentaryAffairIdentifier` to specify the identifier as string, see the following figure:
 
 ![National Parliament Identifier](./figures/national_parliament_identifier.svg "National parliament identifier.")
 
@@ -23,18 +17,46 @@ If an activity is related to a specific parliamentary affair, the activity needs
     chpaf:parliamentaryAffairIdentifier "17.4017"@de .
 ```
 
-<a href="https://github.com/swiss/ch-paf-link/blob/main/examples/national_parliament_identifier.ttl" target="_blank">Example as .ttl file</a>.
-
 </aside>
 
-## Real Usage
+### Actual Use
 
-[This SPARQL query](https://ld.admin.ch/sparql/#query=PREFIX%20chpaf%3A%20%3Chttps%3A%2F%2Fch.paf.link%2F%3E%0ASELECT%20%3Fparl%20%3Fid%20WHERE%20%7B%0A%20%3Fparl%20a%20chpaf%3AParliamentaryAffairIdentifierEntity%3B%0A%20%20chpaf%3AparliamentaryAffairIdentifier%20%3Fid.%0A%7D&endpoint=https%3A%2F%2Fld.admin.ch%2Fquery&requestMethod=POST&tabTitle=Query&headers=%7B%7D&contentTypeConstruct=application%2Fn-triples%2C*%2F*%3Bq%3D0.9&contentTypeSelect=application%2Fsparql-results%2Bjson%2C*%2F*%3Bq%3D0.9&outputFormat=table) shows all the parliamentary affairs that are referenced in [LINDAS](https://ld.admin.ch):
+The following sparql query shows all the parliamentary affairs:
 
 ```sparql
 PREFIX chpaf: <https://ch.paf.link/>
+
 SELECT ?parl ?id WHERE {
- ?parl a chpaf:ParliamentaryAffairIdentifierEntity;
-  chpaf:parliamentaryAffairIdentifier ?id.
+ ?parl a chpaf:ParliamentaryAffairIdentifierEntity ;
+  chpaf:parliamentaryAffairIdentifier ?id .
 }
 ```
+
+The following sparql query shows all activities, that are related to a national parliamentary affair and therefore link to the corresponding `chpaf:NationalParliamentIdentifierEntity`:
+
+```sparql
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX chpaf: <https://ch.paf.link/>
+
+SELECT ?activity ?id WHERE {
+ ?activity prov:used ?entity .
+ ?entity a chpaf:ParliamentaryAffairIdentifierEntity ;
+  chpaf:parliamentaryAffairIdentifier ?id .
+}
+```
+
+### Differences to the Pure Schema
+
+According to [paf.link schema](https://paf.link), the following use would also be possible but is discouraged to have standardized elements:
+
+<aside class="example" title="National Parliament Identifier">
+
+```turtle
+@prefix chpaf: <https://ch.paf.link/> .
+@prefix schema: <http://schema.org/> .
+
+<https://politics.ld.admin.ch/parliamentary-affair/17.4017> a paf:IdentifierEntity, chpaf:ParliamentaryAffair ;
+    schema:identifier "17.4017"@de .
+```
+
+</aside>

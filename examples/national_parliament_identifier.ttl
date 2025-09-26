@@ -1,4 +1,0 @@
-@prefix chpaf: <https://ch.paf.link/> .
-
-<https://politics.ld.admin.ch/parliamentary-affair/17.4017> a chpaf:ParliamentaryAffairIdentifierEntity ;
-    chpaf:parliamentaryAffairIdentifier "17.4017" .
