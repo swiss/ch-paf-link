@@ -1,9 +1,10 @@
 var respecConfig = {
-    specStatus: "unofficial",
+    specStatus: "base",
     shortName: 'ch-paf-link',
-    edDraftURI: "https://ch.paf.link/",
+    subtitle: "Version 1.0",
+    edDraftURI: null,
     format: 'markdown', 
-    latestVersion: null,
+    latestVersion: "https://ch.paf.link",
     maxTocLevel: 2,
     preProcess: [],
     postProcess: [populateOntology, hljs.highlightAll, addSparqlLinks],

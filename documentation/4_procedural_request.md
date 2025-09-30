@@ -52,47 +52,6 @@ SELECT ?activity ?year WHERE {
 }
 ```
 
-The following query shows the report of a single year in tabular form mimicing the original PDF report:
-
-```sparql
-PREFIX chpaf: <https://ch.paf.link/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX schema: <http://schema.org/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?id ?conn_id ?year ?text ?type ?submitter WHERE {
-    
-    ?ReportActivity prov:wasInformedBy ?Activity ;
-        chpaf:proceduralRequestReportYear ?year .
-  
-    ?Activity prov:used ?Entity ;
-        prov:used/chpaf:parliamentaryAffairIdentifier ?id ;
-        prov:qualifiedAssociation ?association .
-    
-    VALUES ?info_prop { chpaf:proceduralRequestProposal chpaf:proceduralRequestInformation }
-    ?Entity ?info_prop ?text .
-    FILTER(lang(?text) = "de")
-    
-    VALUES ?role { chpaf:ProceduralRequestProposalSubmitter chpaf:ProceduralRequestInformationSubmitter }
-    ?association prov:hadRole ?role ;
-    	prov:agent/schema:name ?submitter .
-    FILTER(lang(?submitter) = "de")
-
-
-    # for getting the connex id if it exists (not very elegant, but works)
-    OPTIONAL {
-        ?Activity a chpaf:ProceduralRequestConnex ;
-            prov:used/^prov:used ?MainActivity .
-        ?MainActivity prov:used/chpaf:parliamentaryAffairIdentifier ?conn_id .
-        ?ReportActivity prov:wasInformedBy ?MainActivity .
-        
-        FILTER NOT EXISTS {?MainActivity a chpaf:ProceduralRequestConnex .}
-    }
-
-    BIND (IF (EXISTS { ?Activity a chpaf:ProceduralRequestProposalActivity }, "proposal", "information") AS ?type)
-}
-```
-
 ## Proposal
 
 The proposal how the Federal Council wants to handle the motions and postulates is modelled as an activity according to the following figure:
@@ -137,6 +96,43 @@ PREFIX chpaf: <https://ch.paf.link/>
 SELECT ?activity ?proposal WHERE {
  ?activity a chpaf:ProceduralRequestProposalActivity ;
   prov:used/chpaf:proceduralRequestProposal ?proposal .
+}
+```
+
+The following sparql query shows all proposals in a specific language (e.g. "de") of a specific year (e.g. 2023) and if existing, the connex to another procedural request:
+
+```sparql
+
+PREFIX chpaf: <https://ch.paf.link/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?id ?proposal ?submitter ?conn_id FROM <https://lindas.admin.ch/fch/proceduralrequest> WHERE {
+    
+    BIND ("2023"^^xsd:gYear as ?year)
+  	BIND ("de" as ?lang)
+    
+    ?ProposalActivity prov:used/chpaf:proceduralRequestProposal ?proposal;
+        prov:used/chpaf:parliamentaryAffairIdentifier ?id;
+        prov:qualifiedAssociation ?association.
+  
+    ?association prov:hadRole chpaf:ProceduralRequestProposalSubmitter.
+    ?association prov:agent ?submitter.
+  
+    OPTIONAL {
+        ?ProposalActivity a chpaf:ProceduralRequestConnex;
+            prov:used/^prov:used ?MainActivity.
+        ?MainActivity prov:used/chpaf:parliamentaryAffairIdentifier ?conn_id.
+        ?ReportActivity prov:wasInformedBy ?MainActivity.
+        
+        FILTER NOT EXISTS {?MainActivity a chpaf:ProceduralRequestConnex.}
+    }
+    
+    ?ReportActivity prov:wasInformedBy ?ProposalActivity;
+        chpaf:proceduralRequestReportYear ?year.
+    
+  FILTER(lang(?proposal) = ?lang)
 }
 ```
 
@@ -185,5 +181,42 @@ PREFIX chpaf: <https://ch.paf.link/>
 SELECT ?activity ?information WHERE {
  ?activity a chpaf:ProceduralRequestInformationActivity ;
   prov:used/chpaf:proceduralRequestInformation ?information .
+}
+```
+
+The following sparql query shows all information in a specific language (e.g. "de") of a specific year (e.g. 2023) and if existing, the connex to another procedural request:
+
+```sparql
+
+PREFIX chpaf: <https://ch.paf.link/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?id ?information ?submitter ?conn_id FROM <https://lindas.admin.ch/fch/proceduralrequest> WHERE {
+    
+    BIND ("2023"^^xsd:gYear as ?year)
+  	BIND ("de" as ?lang)
+    
+    ?InformationActivity prov:used/chpaf:proceduralRequestInformation ?information;
+        prov:used/chpaf:parliamentaryAffairIdentifier ?id;
+        prov:qualifiedAssociation ?association.
+  
+    ?association prov:hadRole chpaf:ProceduralRequestInformationSubmitter.
+    ?association prov:agent ?submitter.
+  
+    OPTIONAL {
+        ?InformationActivity a chpaf:ProceduralRequestConnex;
+            prov:used/^prov:used ?MainActivity.
+        ?MainActivity prov:used/chpaf:parliamentaryAffairIdentifier ?conn_id.
+        ?ReportActivity prov:wasInformedBy ?MainActivity.
+        
+        FILTER NOT EXISTS {?MainActivity a chpaf:ProceduralRequestConnex.}
+    }
+    
+    ?ReportActivity prov:wasInformedBy ?InformationActivity;
+        chpaf:proceduralRequestReportYear ?year.
+    
+  FILTER(lang(?information) = ?lang)
 }
 ```
