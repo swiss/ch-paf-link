@@ -7,7 +7,12 @@ var respecConfig = {
     latestVersion: "https://ch.paf.link",
     maxTocLevel: 2,
     preProcess: [],
-    postProcess: [populateOntology, hljs.highlightAll, addSparqlLinks],
+    postProcess: [populateOntology, hljs.highlightAll, addSparqlLinks, () => {
+      const copyright = document.querySelector("#w3c-copyright, .copyright");
+      if (copyright) {
+        copyright.remove();
+      }
+    }],
     github: {
       repoURL: "https://github.com/swiss/ch-paf-link",
       branch: "main", // alternative branch
